@@ -2,7 +2,7 @@
     --primary: #70aab8;
     --primary-dark: #58a0b1;
     --text-dark: #003d4c;
-    --section-padding: clamp(3rem, 8vw, 8rem);
+    --section-padding: clamp(1rem, 8vw, 3rem);
     --header-height: 5rem; /* Added for the new section heights */
   }
 
@@ -47,21 +47,25 @@
 
   .header-button {
     background: white;
-    color: var(--primary);
-    margin: 0 0.5rem;
+    color: var(--text-dark);
     padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 100px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 5px;
+    scrollbar-width: none;
   }
 
-  .header-button:hover {
-    background: var(--text-dark);
+  .header-button:hover,
+  .header-button.active {
+    background: var(--primary);
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
 
   .section {
@@ -110,8 +114,8 @@
   }
 
   #hero img {
-    width: 200px;
-    height: 200px;
+    width: 400px;
+    height: 400px;
     border-radius: 50%;
     margin-bottom: 2rem;
     border: 6px solid white;
@@ -199,6 +203,7 @@
   .section h2 {
     font-size: clamp(2rem, 5vw, 2.5rem);
     margin-bottom: 1.5rem;
+    margin-top: 1rem;
   }
 
   .section p {
@@ -366,12 +371,6 @@
       margin: 0.5rem 0;
     }
 
-    .photo-gallery {
-      width: 100%;
-      margin: 0.5em 0;
-      border-radius: 0;
-    }
-
     .about-text {
       margin: 0.5rem 0;
       max-width: 90%;
@@ -404,12 +403,41 @@
       justify-content: space-evenly;
     }
 
+    .photo-gallery {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        min-width: 100%;
+        min-height: 100%;
+        aspect-ratio: 1 / 1;
+        margin: 1em auto;
+        border: 2px solid var(--text-dark);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        padding: 0;
+    }
+
+    .photo-gallery img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.3s ease;
+        padding: 0;
+        margin: 0;
+    }
+
+    #about {
+        min-height: calc(100vh - var(--header-height));
+      }
+
     #tokenomics {
-      min-height: calc(140vh - var(--header-height));
+      min-height: calc(100vh - var(--header-height));
     }
 
     #how-to-buy {
-      min-height: calc(130vh - var(--header-height));
+      min-height: calc(100vh - var(--header-height));
       padding-top: calc(var(--header-height) + 1rem);
     }
 
@@ -444,7 +472,7 @@
     position: relative;
     width: 40%;
     aspect-ratio: 1 / 1;
-    height: auto;
+    height: 40%;
     margin: 1em auto;
     border: 2px solid var(--text-dark);
     border-radius: 10px;
