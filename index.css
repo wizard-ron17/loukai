@@ -269,12 +269,21 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
     color: white;
-    overflow: visible;
-    transform-origin: center center;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
   }
 
   .step-item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    background: var(--primary-dark);
+  }
+
+  .step-item h3,
+  .step-item p,
+  .step-item .step-number {
+    color: white;
   }
 
   .step-number {
