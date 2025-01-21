@@ -16,6 +16,7 @@
 
   body {
     margin: 0;
+    padding: 0;
     font-family: 'Inter', sans-serif;
     background-color: var(--primary);
     color: white;
@@ -43,6 +44,7 @@
     z-index: 1000;
     background-color: rgba(255, 255, 255, 0.9);
     flex-wrap: wrap;
+    border-bottom: none;
   }
 
   .header-button {
@@ -74,18 +76,18 @@
     padding: var(--section-padding);
     text-align: center;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    scroll-margin-top: var(--header-height);
+    justify-content: flex-start;
+    margin: 0;
     background-size: cover;
     background-position: center;
   }
 
   #hero {
-    min-height: calc(100vh - var(--header-height));
+    min-height: 100vh;
     height: calc(100vh - var(--header-height));
     display: flex;
     flex-direction: column;
@@ -167,16 +169,18 @@
   }
 
   #tokenomics {
-    background: #f8f9fa;
+    background: #ffeed0;
+    height: 100vh;
     color: var(--text-dark);
   }
 
   #how-to-buy {
+    padding-top: calc(var(--header-height) + 2rem);
+    overflow: visible;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-top: calc(var(--header-height) + 2rem);
     background: white;
     color: var(--text-dark);
     width: 100%;
@@ -187,6 +191,7 @@
 
   #socials {
     background: var(--primary-dark);
+    overflow: visible;
   }
 
   .section img {
@@ -202,7 +207,7 @@
 
   .section h2 {
     font-size: clamp(2rem, 5vw, 2.5rem);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     margin-top: 1rem;
   }
 
@@ -214,30 +219,46 @@
 
   .tokenomics-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 900px;
     margin: 2rem auto;
-    max-width: 100%;
+    padding: 0 1rem;
   }
 
-  .tokenomics-item {
+  .tokenomics-card {
     background: white;
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
   }
 
-  .tokenomics-item:hover {
+  .tokenomics-card:hover {
     transform: translateY(-5px);
   }
 
+  .tokenomics-card h3 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .tokenomics-card p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary);
+  }
+    
   .steps-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin: 2rem auto;
     max-width: 100%;
+    overflow: visible;
+    padding: 1rem;
   }
 
   .step-item {
@@ -245,8 +266,10 @@
     padding: 1rem;
     border-radius: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
     color: white;
+    overflow: visible;
+    transform-origin: center center;
   }
 
   .step-item:hover {
@@ -267,6 +290,7 @@
     justify-content: center;
     margin-top: 2rem;
     flex-wrap: wrap;
+    overflow: visible;
   }
 
   .social-button {
@@ -320,6 +344,21 @@
 
   a:hover::after {
     transform: scaleX(1);
+  }
+
+  .token-link {
+    display: inline-block;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+    font-weight: 500;
+    margin: 0 0;
+    padding: 0 0;
+  }
+
+  .token-link:hover {
+    color: var(--primary);
+    transform: translateX(5px); /* Slight movement on hover */
+    text-decoration: underline;
   }
 
   @media (max-width: 768px) {
@@ -438,12 +477,17 @@
 
     #how-to-buy {
       min-height: calc(100vh - var(--header-height));
-      padding-top: calc(var(--header-height) + 1rem);
+      padding-top: calc(var(--header-height));
     }
 
     #hero {
       min-height: 100vh;
       height: auto;
+    }
+
+    .token-link {
+      font-size: 0.9rem;
+      padding: 0 0;
     }
   }
 
@@ -464,7 +508,64 @@
     }
 
     .section {
-      min-height: calc(130vh - var(--header-height));
+      min-height: calc(1000vh - var(--header-height));
+    }
+
+    #about {
+        min-height: calc(110vh - var(--header-height));
+      }
+
+    #tokenomics {
+        min-height: calc(100vh - var(--header-height));
+      }
+
+    .token-link {
+        font-size: 0.9rem;
+        padding: 0 0;
+      }
+
+    #socials {
+        min-height: calc(100vh - var(--header-height));
+    }
+
+    .social-button {
+        width: 100%;
+        margin: 0rem 0;
+    }
+
+    #how-to-buy {
+      padding-top: calc(var(--header-height) + 0.5rem);
+      min-height: calc(110vh - var(--header-height));
+    }
+
+    #how-to-buy h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .steps-grid {
+      gap: 0.75rem; /* Reduce gap between steps */
+      margin: 0.75rem auto;
+    }
+
+    .step-item {
+      padding: 0.75rem;
+      font-size: 0.85rem; /* Smaller font for step content */
+    }
+
+    .step-item h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .step-number {
+      font-size: 1.5rem; /* Smaller step numbers */
+      margin-bottom: 0.25rem;
+    }
+
+    .step-item p {
+      margin: 0.25rem 0;
+      line-height: 1.3;
     }
   }
 
