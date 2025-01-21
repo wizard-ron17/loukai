@@ -620,6 +620,13 @@
     background: var(--primary-dark);
   }
 
+@supports (-webkit-touch-callout: none) {
+    img {
+        -webkit-transform: translateZ(0);
+        will-change: transform;
+    }
+}
+
   /* Add these to ensure section backgrounds fill properly */
   #hero, #about, #gallery, #how-to-buy {
     width: 100%;
