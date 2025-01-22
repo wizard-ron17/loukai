@@ -272,6 +272,7 @@
     text-decoration: none;
     display: block;
     cursor: pointer;
+    overflow: hidden;
   }
 
   .step-item:hover {
